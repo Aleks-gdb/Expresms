@@ -31,3 +31,56 @@
     transform: rotate(360deg);
   }
 }
+
+.loginbutton{
+  font-family: Futura, Trebuchet MS,Arial,sans-serif; 
+  font-style: normal; 
+  font-variant: normal;
+  font-weight: bold !important;
+  border: none !important;
+  background-color: black !important;
+  color: white !important;
+  border-radius: 30px !important;
+}
+
+.loginbutton:hover{
+  color: white !important;
+  background-color: black !important;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px){
+  .logo{
+    padding-left: 0px;
+    width: 190px;
+    height: 40px;
+  }
+  .loginbutton{
+    font-size: 25px !important;
+    padding: 0px 10px !important;
+    margin-right: 10px !important; 
+  }
+}
+@media screen and (min-width: 758px) and (max-width: 1024px){
+  .logo{
+    padding-left: 50px;
+    width: 310px;
+    height: 50px;
+  }
+  .loginbutton{
+    font-size: 29px !important; 
+    padding: 0px 10px !important;
+    margin-right: 50px;
+  }
+}
+@media screen and (min-width: 1025px){
+  .logo{
+    padding-left: 100px;
+    width: 360px;
+    height: 50px;
+  }
+  .loginbutton{
+    font-size: 29px !important; 
+    padding: 0px 10px!important;
+    margin-right: 100px;
+  }
+}
