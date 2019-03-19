@@ -18,6 +18,40 @@
   background-color: black !important;
 }
 
+.textingform{
+  margin-right: 200px;
+  margin-left: 200px;
+  padding-top: 50px;
+}
+
+.sendButton{
+  font-family: Futura, Trebuchet MS,Arial,sans-serif; 
+  font-style: normal; 
+  font-variant: normal;
+  font-weight: bold !important;
+  border-color: white !important;
+  background-color: black !important;
+  color: white !important;
+  border-radius: 30px !important;
+  padding: 0px 10px !important;
+  font-size: 25px !important;
+}
+
+.formbody{
+  background-color: white;
+}
+
+#formLabel{
+  font-family: Futura, Trebuchet MS,Arial,sans-serif; 
+  font-style: normal; 
+  font-variant: normal;
+  font-weight: bold !important;
+}
+
+#formBox{
+  border-color: black;
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px){
   .logo{
     padding-left: 0px;
@@ -28,6 +62,10 @@
     font-size: 25px !important;
     padding: 0px 10px !important;
     margin-right: 10px !important; 
+  }
+  .textingform{
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 @media screen and (min-width: 758px) and (max-width: 1024px){
