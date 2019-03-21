@@ -49,16 +49,16 @@ export default class TextingForm extends Component{
                 SEND
             </Button>
 
-          <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal show={this.state.show} onHide={this.handleClose} id="modalbody">
           <Modal.Header closeButton>
-            <Modal.Title>Confirm send</Modal.Title>
+            <Modal.Title id="modaltitle">Confirm send</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Would you like to send this message?</Modal.Body>
+          <Modal.Body id="modalbody">Would you like to send this message?</Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
+            <Button variant="secondary" onClick={this.handleClose} id="modalbutton">
               Close
             </Button>
-            <Button variant="primary" onClick={this.handleClose}>
+            <Button variant="primary" onClick={this.handleClose} id="modalbutton">
               Send
             </Button>
           </Modal.Footer>
