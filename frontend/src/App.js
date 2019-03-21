@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
-import Navigation from './Navigation';
-import TextingForm from './TextingForm';
-import './App.css';
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Routes from "./Components/Routes";
+import "./App.css";
 
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-      <div className="mainnavbar">
-      <Navigation />
-      <div className="formbody">
-      <TextingForm />
-      </div>
-      </div>
+        <div className="App">
+            <Routes />
+        </div>
     );
   }
 }
-
-export default App;

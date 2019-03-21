@@ -52,6 +52,18 @@
   border-color: black;
 }
 
+.form-grouplogin{
+  width: 200px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loginformheader{
+  width: 200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px){
   .logo{
     padding-left: 0px;
@@ -61,7 +73,6 @@
   .loginbutton{
     font-size: 25px !important;
     padding: 0px 10px !important;
-    margin-right: 10px !important; 
   }
   .textingform{
     margin-left: 20px;
