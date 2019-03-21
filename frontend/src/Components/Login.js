@@ -4,7 +4,7 @@ export default class Login extends Component {
     render() {
         return(
         <div className="loginform" style={{ marginTop: '50px'}}>
-            <h2 style={{marginBottom: '40px'}} className="loginformheader">Login</h2>
+            <h2 style={{marginBottom: '15px'}} className="loginformheader">Login</h2>
             <form>
                 <div className="form-grouplogin">
                     <input
