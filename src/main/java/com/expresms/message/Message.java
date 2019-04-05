@@ -1,21 +1,22 @@
 package com.expresms.message;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.expresms.user.User;
+
+import javax.persistence.*;
 
 @Entity
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String phoneNumber;
     private String language;
     private String timeStamp;
     private String text;
     private String translatedText;
+    @ManyToOne
+    private User user;
 
     public Message() {}
 
@@ -35,11 +36,11 @@ public class Message {
         this.phoneNumber = number;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

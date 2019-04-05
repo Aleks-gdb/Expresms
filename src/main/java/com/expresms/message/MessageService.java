@@ -55,7 +55,7 @@ public class MessageService {
         messageRepository.save(message);
     }
 
-    public void updateMessage(String id, Message message){
+    public void updateMessage(Long id, Message message){
         if(messageRepository.findById(id).orElse(null) != null) {
             message.setId(id);
             messageRepository.save(message);
@@ -67,14 +67,13 @@ public class MessageService {
         System.out.println("AWSCRedentials created " + awsCreds.getAWSAccessKeyId());
         AmazonTranslate translate = AmazonTranslateClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
-                .withRegion("us-west-2")
+                .withRegion(REGION)
                 .build();
         System.out.println(text);
         TranslateTextRequest request = new TranslateTextRequest()
                 .withText(text)
                 .withSourceLanguageCode("en")
                 .withTargetLanguageCode(language);
-        System.out.println("Here");
         TranslateTextResult result  = translate.translateText(request);
         System.out.println(result);
         return result.getTranslatedText();

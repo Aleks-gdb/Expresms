@@ -34,7 +34,7 @@ public class MessageController {
     }
 
    @PutMapping("/messages/{id}")
-    public void updateMessage(@RequestBody Message message, @PathVariable String id) {
+    public void updateMessage(@RequestBody Message message, @PathVariable Long id) {
         messageService.updateMessage(id, message);
     }
 
@@ -43,9 +43,8 @@ public class MessageController {
         messageService.deleteMessage(id);
     }
 
-    @PostMapping("/messages/{id}")
-    public void sendMessage(@PathVariable String id) {
-        Message message = messageService.getMessage(id);
+    @PostMapping("/")
+    public void sendMessage(@RequestBody Message message) {
         messageService.sendMessage(message);
     }
 }
