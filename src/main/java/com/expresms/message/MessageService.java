@@ -1,5 +1,6 @@
 package com.expresms.message;
 
+import com.expresms.user.*;
 import com.twilio.Twilio;
 import com.twilio.type.PhoneNumber;
 import com.amazonaws.auth.AWSCredentials;
@@ -19,6 +20,13 @@ import org.springframework.beans.factory.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.security.Principal;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Optional;
 
 
 
@@ -40,27 +48,18 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-    public List<Message> getAllMessages() {
-        List<Message> messages = new ArrayList<>();
-        messageRepository.findAll()
-        .forEach(messages::add);
-        return messages;
+    public Collection<Message> getAllMessages(String id) {
+        return messageRepository.findAllByUserId(id);
     }
 
-    public Message getMessage(String id) {
-        return messageRepository.findById(id).orElse(null);
+    public Optional<Message> getMessage(Long id) {
+        return messageRepository.findById(id);
     }
 
-    public void addMessage(Message message) {
-        messageRepository.save(message);
+    public Message addMessage(Message message) {
+        return messageRepository.save(message);
     }
 
-    public void updateMessage(Long id, Message message){
-        if(messageRepository.findById(id).orElse(null) != null) {
-            message.setId(id);
-            messageRepository.save(message);
-        }
-    }
 
     public String awsTranslate(String text, String language) {
         AWSCredentials awsCreds = new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY);
@@ -79,7 +78,7 @@ public class MessageService {
         return result.getTranslatedText();
     }
 
-    public void deleteMessage(String id) {
+    public void deleteMessage(Long id) {
         messageRepository.deleteById(id);
     }
 

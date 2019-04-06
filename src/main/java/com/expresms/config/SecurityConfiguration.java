@@ -1,6 +1,7 @@
 package com.expresms.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -24,7 +25,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/**/*.{js,html,css}").permitAll()
-                .antMatchers("/", "/login", "/register", "/messages").permitAll()
+                .antMatchers("/", "/login", "/register").permitAll()
+                .antMatchers(HttpMethod.PUT, "/").permitAll()
+                .antMatchers(HttpMethod.POST, "/").permitAll()
                 .anyRequest().authenticated();
     }
 

@@ -57,4 +57,12 @@ public class Message {
     public String getText() { return text; }
 
     public String getTranslatedText() { return translatedText; }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
