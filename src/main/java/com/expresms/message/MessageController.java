@@ -52,7 +52,6 @@ public class MessageController {
         return ResponseEntity.created(new URI("/message/" + result.getId()))
                 .body(result);
     }
-
     @PutMapping("/")
     public String translateMessage(@RequestBody Map<String, String> input) {
         return messageService.awsTranslate(input.get("text"), input.get("language"));

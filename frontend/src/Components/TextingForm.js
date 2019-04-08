@@ -2,15 +2,21 @@ import React, { Component } from 'react';
 import {Form, Col, Button, Modal} from 'react-bootstrap';
 
 export default class TextingForm extends Component{
+
+    emptyItem = {
+        text: '',
+        language: '',
+    };
     constructor(props, context) {
         super(props, context);
-    
+        this.state = {
+            item: this.emptyItem,
+            show: false
+        };
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
-    
-        this.state = {
-          show: false,
-        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+
       }
     
       handleClose() {
@@ -20,8 +26,38 @@ export default class TextingForm extends Component{
       handleShow() {
         this.setState({ show: true });
       }
+      handleChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        let item = {...this.state.item};
+        item[name] = value;
+        console.log(item);
+        this.setState({item});
+      }
+    async handleSubmit(event) {
+        event.preventDefault();
+        const {item, show} = this.state;
+
+        await fetch('http://localhost:8080/', {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        })
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(json => {
+                        console.log(json);
+                    });
+                }
+            });
+    }
     
     render(){
+        const {item} = this.state;
         return(
             <div className="textingform">
             <Form>
@@ -33,19 +69,20 @@ export default class TextingForm extends Component{
 
                 <Form.Group as={Col} controlId="formGridState">
                 <Form.Label id="formLabel">LANGUAGE</Form.Label>
-                <Form.Control as="select" id="formBox">
+                <Form.Control as="select" id="formBox" name="language"  onChange={this.handleChange.bind(this)}>
                     <option>Choose...</option>
                     <option>English</option>
+                    <option>fr</option>
                 </Form.Control>
                 </Form.Group>
             </Form.Row>
 
             <Form.Group controlId="formGridTextarea1">
                 <Form.Label id="formLabel">MESSAGE</Form.Label>
-                <Form.Control as="textarea" rows="4" placeholder="Write your text message here" id="formBox"/>
+                <Form.Control as="textarea" rows="4"  placeholder="Write your text message here" id="formBox" name="text"  onChange={this.handleChange.bind(this)}/>
             </Form.Group>
 
-            <Button variant="primary" onClick={this.handleShow} className="sendButton">
+            <Button variant="primary" onClick={this.handleSubmit} className="sendButton">
                 SEND
             </Button>
 
