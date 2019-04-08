@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, NavItem, Button } from "react-bootstrap";
 import Logo from "../Logo.png";
-export default class Navigation extends Component {
+export default class MainNavigation extends Component {
   render() {
     return (
       <div className="mainnavbar">

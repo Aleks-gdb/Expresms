@@ -35,6 +35,34 @@
   background-color: black !important;
 }
 
+.loggedinbutton{
+  font-family: Futura, Trebuchet MS,Arial,sans-serif; 
+  font-style: normal; 
+  font-variant: normal;
+  font-weight: bold !important;
+  border-color: white !important;
+  background-color: black !important;
+  color: white !important;
+  border-radius: 30px !important;
+}
+
+.loggedinbutton:hover{
+  color: white !important;
+  background-color: black !important;
+}
+
+.logoAcc{
+  width: 210px;
+}
+
+.navbar-light .navbar-toggler{
+  border-color: white;
+}
+
+.navbar-toggler{
+  background-color: white;
+}
+
 .textingform{
   margin-right: 200px;
   margin-left: 200px;
@@ -166,7 +194,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px){
-  .logo{
+  .logo, .logoAcc{
     padding-left: 0px;
     width: 190px;
     height: 40px;
@@ -175,6 +203,12 @@
     font-size: 25px !important;
     padding: 0px 31px !important;
     margin-bottom: 1px;
+  }
+  .loggedinbutton{
+    font-size: 20px !important;
+    padding: 0px 31px !important;
+    margin-bottom: 1px;
+    float: right;
   }
   .registerbutton{
     padding: 0px 12.5px;
@@ -187,24 +221,24 @@
   }
 }
 @media screen and (min-width: 758px) and (max-width: 1023px){
-  .logo{
+  .logo, .logoAcc{
     padding-left: 50px;
     width: 310px;
     height: 50px;
   }
-  .loginbutton{
+  .loginbutton, .loggedinbutton{
     font-size: 29px !important; 
     padding: 0px 10px !important;
     margin-right: 10px;
   }
 }
 @media screen and (min-width: 1024px){
-  .logo{
+  .logo, .logoAcc{
     padding-left: 100px;
     width: 360px;
     height: 50px;
   }
-  .loginbutton{
+  .loginbutton, .loggedinbutton{
     font-size: 29px !important; 
     padding: 0px 10px!important;
     margin-right: 10px;
