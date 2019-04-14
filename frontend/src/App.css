@@ -51,6 +51,9 @@
   background-color: black !important;
 }
 
+.mr-auto, .mx-auto{
+  float: right;
+}
 .logoAcc{
   width: 210px;
 }
