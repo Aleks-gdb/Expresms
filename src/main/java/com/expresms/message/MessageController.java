@@ -3,11 +3,13 @@ package com.expresms.message;
 import java.util.List;
 import java.util.Map;
 
+import com.amazonaws.services.translate.model.TranslateTextResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class MessageController {
 
     @Autowired
@@ -28,8 +30,8 @@ public class MessageController {
         messageService.addMessage(message);
     }
 
-    @PutMapping("/messages")
-    public String translateMessage(@RequestBody Map<String, String> input) {
+    @PutMapping("/")
+    public TranslateTextResult translateMessage(@RequestBody Map<String, String> input) {
         return messageService.awsTranslate(input.get("text"), input.get("language"));
     }
 

@@ -16,6 +16,7 @@ import com.amazonaws.services.translate.model.TranslateTextResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +63,8 @@ public class MessageService {
         }
     }
 
-    public String awsTranslate(String text, String language) {
+    @CrossOrigin(origins = "http://localhost:3000")
+    public TranslateTextResult awsTranslate(String text, String language) {
         AWSCredentials awsCreds = new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY);
         System.out.println("AWSCRedentials created " + awsCreds.getAWSAccessKeyId());
         AmazonTranslate translate = AmazonTranslateClientBuilder.standard()
@@ -76,7 +78,7 @@ public class MessageService {
                 .withTargetLanguageCode(language);
         TranslateTextResult result  = translate.translateText(request);
         System.out.println(result);
-        return result.getTranslatedText();
+        return result;
     }
 
     public void deleteMessage(String id) {

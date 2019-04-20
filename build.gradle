@@ -30,9 +30,9 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-rest")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("org.springframework.boot:spring-boot-starter-security")
-    compile group: 'org.springframework.security', name: 'spring-security-oauth2-jose', version: '5.1.5.RELEASE'
-    compile group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.1.5.RELEASE'
+    //compile("org.springframework.boot:spring-boot-starter-security")
+    //compile group: 'org.springframework.security', name: 'spring-security-oauth2-jose', version: '5.1.5.RELEASE'
+    //compile group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.1.5.RELEASE'
     compile group: "com.twilio.sdk", name: "twilio", version: "7.35.1"
     compile group: "com.amazonaws", name: "aws-java-sdk-translate", version: "1.11.281"
     compile 'mysql:mysql-connector-java'
