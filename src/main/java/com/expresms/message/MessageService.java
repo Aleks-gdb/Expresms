@@ -24,6 +24,7 @@ import java.util.List;
 
 
 @Service
+@CrossOrigin(origins = "http://localhost:3000")
 public class MessageService {
 
     private static final String REGION = "us-west-2";
@@ -63,7 +64,7 @@ public class MessageService {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     public TranslateTextResult awsTranslate(String text, String language) {
         AWSCredentials awsCreds = new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY);
         System.out.println("AWSCRedentials created " + awsCreds.getAWSAccessKeyId());
