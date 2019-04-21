@@ -6,6 +6,7 @@ export default class TextingForm extends Component{
     emptyItem = {
         text: '',
         language: '',
+        number: ''
     };
     constructor(props, context) {
         super(props, context);
@@ -61,7 +62,7 @@ export default class TextingForm extends Component{
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label id="formLabel">TO</Form.Label>
-                            <Form.Control type="email" placeholder="Enter recipient phone number" id="formBox" />
+                            <Form.Control type="email" placeholder="Enter recipient phone number" id="formBox" name="number" onChange={this.handleChange.bind(this)} />
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridState">
