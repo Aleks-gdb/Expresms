@@ -21,7 +21,7 @@ public class MessageController {
     }
 
     @GetMapping("/messages/{id}")
-    public Message getMessage(@PathVariable String id) {
+    public Message getMessage(@PathVariable Long id) {
         return messageService.getMessage(id);
     }
 
@@ -41,7 +41,7 @@ public class MessageController {
     }
 
     @DeleteMapping("/messages/{id}")
-    public void deleteMessage(@PathVariable String id) {
+    public void deleteMessage(@PathVariable Long id) {
         messageService.deleteMessage(id);
     }
 

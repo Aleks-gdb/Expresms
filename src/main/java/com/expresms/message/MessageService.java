@@ -49,7 +49,7 @@ public class MessageService {
         return messages;
     }
 
-    public Message getMessage(String id) {
+    public Message getMessage(Long id) {
         return messageRepository.findById(id).orElse(null);
     }
 
@@ -82,7 +82,7 @@ public class MessageService {
         return result;
     }
 
-    public void deleteMessage(String id) {
+    public void deleteMessage(Long id) {
         messageRepository.deleteById(id);
     }
 
