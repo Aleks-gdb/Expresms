@@ -41,7 +41,7 @@ export default class TextingForm extends Component{
         event.preventDefault();
         const {item, show} = this.state;
 
-        await fetch('http://localhost:8080/', {
+        await fetch('http://localhost:3000/', {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -69,8 +69,27 @@ export default class TextingForm extends Component{
                             <Form.Label id="formLabel">LANGUAGE</Form.Label>
                             <Form.Control as="select" id="formBox" name="language"  onChange={this.handleChange.bind(this)}>
                                 <option>Choose...</option>
+                                <option>Arabic</option>
+                                <option>Chinese(Simpl.)</option>
+                                <option>Chinese(Trad.)</option>
+                                <option>Czech</option>
+                                <option>Danish</option>
+                                <option>Dutch</option>
                                 <option>English</option>
-                                <option>fr</option>
+                                <option>Finnish</option>
+                                <option>French</option>
+                                <option>German</option>
+                                <option>Hebrew</option>
+                                <option>Indonesian</option>
+                                <option>Italian</option>
+                                <option>Japanese</option>
+                                <option>Korean</option>
+                                <option>Polish</option>
+                                <option>Portugese</option>
+                                <option>Russian</option>
+                                <option>Spanish</option>
+                                <option>Swedish</option>
+                                <option>Turkish</option>
                             </Form.Control>
                         </Form.Group>
                     </Form.Row>
