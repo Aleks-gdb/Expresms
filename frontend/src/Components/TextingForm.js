@@ -42,7 +42,7 @@ export default class TextingForm extends Component{
 
             <Form.Group controlId="formGridTextarea1">
                 <Form.Label id="formLabel">MESSAGE</Form.Label>
-                <Form.Control as="textarea" rows="4" placeholder="Write your text message here" id="formBox"/>
+                <Form.Control as="textarea" rows="4" placeholder="Write your text message here (any language)" id="formBox"/>
             </Form.Group>
 
             <Button variant="primary" onClick={this.handleShow} className="sendButton">
