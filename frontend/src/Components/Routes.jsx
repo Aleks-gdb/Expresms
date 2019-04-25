@@ -3,8 +3,8 @@ import { Route, BrowserRouter } from "react-router-dom";
 import Register from "./Register";
 import Home from "./Home";
 import Login from "./Login";
-import Profile from "./ProfileSettings";
-import Account from "./AccountMainPage";
+import Account from "./ProfileSettings";
+import Profile from "./AccountMainPage";
 
 export default class Routes extends Component {
   render() {
