@@ -7,15 +7,13 @@ export default class LoggedInNavbar extends Component {
       <div className="mainnavbar">
         <Navbar expand="lg" collapseOnSelect fixedTop className="justify-content-between">
         <Navbar.Brand href="/"><img alt="logo" src={Logo} className="logoAcc"/></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Toggle/>
           <Navbar.Collapse className="justify-content-end">
-            <Nav className = "mr-auto">
             <NavItem pullRight>
               <Button className="loggedinbutton" variant="dark" href="/account">MESSAGES</Button>
               <Button className="loggedinbutton" variant="dark" href="/settings">SETTINGS</Button>
               <Button className="loggedinbutton" variant="dark" href="/">LOGOUT</Button>
             </NavItem>
-            </Nav>
           </Navbar.Collapse>
         </Navbar>
       </div>
