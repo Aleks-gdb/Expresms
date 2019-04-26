@@ -41,7 +41,7 @@ export default class TextingForm extends Component{
         event.preventDefault();
         const {item, show} = this.state;
 
-        await fetch('http://localhost:3000/', {
+        await fetch('http://localhost:8080/', {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',

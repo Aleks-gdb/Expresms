@@ -19,14 +19,38 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 
 @Service
 @CrossOrigin(origins = "http://localhost:3000")
 public class MessageService {
 
+    Map<String, String> languages = new HashMap<String, String>() {{
+        put("Arabic", "ar");
+        put("Chinese(Simpl.)", "zh");
+        put("Chinese(Trad.)", "zh-TW");
+        put("Czech", "cs");
+        put("Danish", "da");
+        put("Dutch", "nl");
+        put("English", "en");
+        put("Finnish", "fi");
+        put("French", "fr");
+        put("German", "de");
+        put("Hebrew", "he");
+        put("Indonesian", "id");
+        put("Italian", "it");
+        put("Japanese", "ja");
+        put("Korean", "ko");
+        put("Polish", "pl");
+        put("Portugese", "pt");
+        put("Russian", "ru");
+        put("Spanish", "es");
+        put("Swedish", "sv");
+        put("Turkish", "tr");
+    }};
     private static final String REGION = "us-west-2";
     @Value("${TWILIO_NUMBER}")
     private String FROM;
@@ -75,8 +99,8 @@ public class MessageService {
         System.out.println(text);
         TranslateTextRequest request = new TranslateTextRequest()
                 .withText(text)
-                .withSourceLanguageCode("en")
-                .withTargetLanguageCode(language);
+                .withSourceLanguageCode("auto")
+                .withTargetLanguageCode(languages.get(language));
         TranslateTextResult result  = translate.translateText(request);
         System.out.println(result);
         return result;
@@ -90,7 +114,7 @@ public class MessageService {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN );
 
         com.twilio.rest.api.v2010.account.Message mMessage = com.twilio.rest.api.v2010.account.Message
-                .creator(new PhoneNumber(message.getNumber()), // to
+                .creator(new PhoneNumber("+1" + message.getNumber()), // to
                         new PhoneNumber(FROM), // from
                         message.getText())
                 .create();
