@@ -1,6 +1,8 @@
 package com.expresms.message;
 
 import com.expresms.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import javax.persistence.*;
 
@@ -16,6 +18,7 @@ public class Message {
     private String text;
     private String translatedText;
     @ManyToOne
+    @JsonIgnore
     private User user;
 
     public Message() {}
@@ -57,4 +60,32 @@ public class Message {
     public String getText() { return text; }
 
     public String getTranslatedText() { return translatedText; }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setTranslatedText(String translatedText) {
+        this.translatedText = translatedText;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

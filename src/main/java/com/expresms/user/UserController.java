@@ -1,12 +1,14 @@
 package com.expresms.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+
 import java.util.Map;
 
 @RestController
@@ -15,7 +17,7 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping("/register")
-    public void register(@RequestBody Map<String,String> input) {
+    public ResponseEntity<?> register(@RequestBody Map<String,String> input) {
         String password = input.get("password");
         String email = input.get("email");
         User usr = null;
@@ -26,8 +28,9 @@ public class UserController {
             userRepository.save(usr);
         }
         else {
-            System.out.println(email + password);
+            return new ResponseEntity<>("Email already taken", HttpStatus.CONFLICT);
         }
         System.out.println(userRepository.findAll());
+        return new ResponseEntity<>("User created", HttpStatus.OK);
     }
 }

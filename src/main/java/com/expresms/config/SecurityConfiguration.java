@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         .antMatchers(HttpMethod.POST, "/").permitAll()
                     .anyRequest().authenticated().and()
                     .formLogin()
-                    .defaultSuccessUrl("/", true)
+                    //.defaultSuccessUrl("/", true)
                     .permitAll()
                     .and()
                     .httpBasic();

@@ -1,10 +1,14 @@
 package com.expresms.message;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
 import com.amazonaws.services.translate.model.TranslateTextResult;
+import com.expresms.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -14,10 +18,14 @@ public class MessageController {
 
     @Autowired
     private MessageService messageService;
+    @Autowired
+    UserRepository userRepository;
 
     @GetMapping("/messages")
-    public List<Message> getAllMessages(){
-        return messageService.getAllMessages();
+    public List<Message> getAllMessages(Principal principal){
+
+        System.out.println(principal.getName());
+        return messageService.getAllMessages(principal.getName());
     }
 
     @GetMapping("/messages/{id}")
@@ -27,6 +35,8 @@ public class MessageController {
 
     @PostMapping("/messages")
     public void addMessage(@RequestBody Message message) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        message.setUser(userRepository.findByEmail(auth.getName()));
         messageService.addMessage(message);
     }
 

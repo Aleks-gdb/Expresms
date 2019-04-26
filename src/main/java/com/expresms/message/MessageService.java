@@ -66,10 +66,8 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-    public List<Message> getAllMessages() {
-        List<Message> messages = new ArrayList<>();
-        messageRepository.findAll()
-        .forEach(messages::add);
+    public List<Message> getAllMessages(String email) {
+        List<Message> messages = messageRepository.findAllByUserEmail(email);
         return messages;
     }
 
