@@ -1,4 +1,3 @@
-package com.expresms;
 
 import com.expresms.user.User;
 import com.expresms.user.UserRepository;

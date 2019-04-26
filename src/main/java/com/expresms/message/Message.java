@@ -1,5 +1,3 @@
-package com.expresms.message;
-
 import com.expresms.user.User;
 
 import javax.persistence.*;
