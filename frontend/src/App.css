@@ -206,6 +206,21 @@
   padding-top: 10px;
 }
 
+#passChangeCard{
+  width:500px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+#deleteButtons{
+  margin: auto;
+  text-align: right;
+}
+
+#settingsButtons{
+  margin-top: 20px;
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px){
   .logo, .logoAcc{
     padding-left: 0px;

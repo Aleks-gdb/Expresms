@@ -56,10 +56,10 @@ export default class TextingForm extends Component{
           <Modal.Body id="modalbody">Would you like to send this message?</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose} id="modalbutton">
-              Close
+              Send
             </Button>
             <Button variant="primary" onClick={this.handleClose} id="modalbutton">
-              Send
+              Close
             </Button>
           </Modal.Footer>
         </Modal>

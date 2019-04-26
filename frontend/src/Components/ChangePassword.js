@@ -18,7 +18,7 @@ render(){
                 <Form.Control type="password" placeholder="Confirm new password" />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="dark" type="submit">
                 Submit
             </Button>
         </Form>
