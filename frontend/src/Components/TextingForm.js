@@ -2,25 +2,57 @@ import React, { Component } from 'react';
 import {Form, Col, Button, Modal} from 'react-bootstrap';
 
 export default class TextingForm extends Component{
-    constructor(props, context) {
-        super(props, context);
-    
-        this.handleShow = this.handleShow.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-    
-        this.state = {
+    emptyItem = {
+      text: '',
+      language: '',
+      number: ''
+  };
+  constructor(props, context) {
+      super(props, context);
+      this.state = {
+          item: this.emptyItem,
           show: false,
-        };
-      }
-    
-      handleClose() {
-        this.setState({ show: false });
-      }
-    
-      handleShow() {
-        this.setState({ show: true });
-      }
-    
+          data: null
+      };
+      this.handleShow = this.handleShow.bind(this);
+      this.handleClose = this.handleClose.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+
+  }
+
+  handleClose() {
+      this.setState({ show: false });
+  }
+
+  handleShow() {
+      this.setState({ show: true });
+  }
+  handleChange(event) {
+      const target = event.target;
+      const value = target.value;
+      const name = target.name;
+      let item = {...this.state.item};
+      item[name] = value;
+      console.log(item);
+      this.setState({item});
+  }
+  async handleSubmit(event) {
+      event.preventDefault();
+      const {item, show} = this.state;
+
+      await fetch('http://localhost:3000/', {
+          method: 'PUT',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(item)
+      })
+          .then(response => response.json())
+          .then(data => console.log(data));
+
+  }  
+  
     render(){
         return(
             <div className="textingform">
@@ -71,9 +103,9 @@ export default class TextingForm extends Component{
 
           <Modal show={this.state.show} onHide={this.handleClose} id="modalbody">
           <Modal.Header closeButton>
-            <Modal.Title id="modaltitle">Confirm send</Modal.Title>
+            <Modal.Title id="modaltitle">Would you like to send this message?</Modal.Title>
           </Modal.Header>
-          <Modal.Body id="modalbody">Would you like to send this message?</Modal.Body>
+          <Modal.Body id="modalbody"></Modal.Body>
           <Modal.Footer>
             <Button variant="dark" onClick={this.handleClose}>
               Send
