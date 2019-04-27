@@ -60,12 +60,12 @@ export default class TextingForm extends Component{
             <Form.Row>
                 <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label id="formLabel">TO</Form.Label>
-                <Form.Control type="email" placeholder="Enter recipient phone number" id="formBox" />
+                <Form.Control type="email" placeholder="Enter recipient phone number" id="formBox" onChange={this.handleChange.bind(this)}/>
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridState">
                 <Form.Label id="formLabel">LANGUAGE</Form.Label>
-                <Form.Control as="select" id="formBox">
+                <Form.Control as="select" id="formBox" onChange={this.handleChange.bind(this)}>
                     <option>Choose...</option>
                     <option>Arabic</option> 
                     <option>Chinese(Simpl.)</option>
@@ -94,7 +94,7 @@ export default class TextingForm extends Component{
 
             <Form.Group controlId="formGridTextarea1">
                 <Form.Label id="formLabel">MESSAGE</Form.Label>
-                <Form.Control as="textarea" rows="4" placeholder="Write your text message here (any language)" id="formBox"/>
+                <Form.Control as="textarea" rows="4" placeholder="Write your text message here (any language)" id="formBox" onChange={this.handleChange.bind(this)}/>
             </Form.Group>
 
             <Button variant="dark" onClick={this.handleShow}>
