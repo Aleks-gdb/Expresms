@@ -16,6 +16,7 @@ export default class TextingForm extends Component{
       };
       this.handleClose = this.handleClose.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleSend = this.handleSend.bind(this);
   }
 
   handleClose() {
@@ -31,6 +32,7 @@ export default class TextingForm extends Component{
       console.log(item);
       this.setState({item});
   }
+
   async handleSubmit(event) {
       event.preventDefault();
       const {item} = this.state;
@@ -45,8 +47,23 @@ export default class TextingForm extends Component{
       })
           .then(response => response.json())
           .then(data => this.setState({msg: data.translatedText}));
-      this.setState({show: true});
+    (this.state.show ? this.setState({show: false}) : this.setState({show: true}));
   }  
+
+  async handleSend(event) {
+    event.preventDefault();
+    const {item} = this.state;
+
+    await fetch('http://localhost:3000/', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item)
+    });
+    (this.state.show ? this.setState({show: false}) : this.setState({show: true}));
+    }  
   
     render(){
         return(
@@ -102,7 +119,7 @@ export default class TextingForm extends Component{
           </Modal.Header>
           <Modal.Body id="modalbody">{this.state.msg}</Modal.Body>
           <Modal.Footer>
-            <Button variant="dark" onClick={this.handleClose}>
+            <Button variant="dark" onClick={this.handleSend}>
               Send
             </Button>
             <Button variant="dark" onClick={this.handleClose}>
