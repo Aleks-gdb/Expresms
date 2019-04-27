@@ -65,7 +65,7 @@ export default class TextingForm extends Component{
                 <Form.Control as="textarea" rows="4" placeholder="Write your text message here (any language)" id="formBox"/>
             </Form.Group>
 
-            <Button variant="primary" onClick={this.handleShow} className="sendButton">
+            <Button variant="dark" onClick={this.handleShow}>
                 SEND
             </Button>
 
@@ -75,10 +75,10 @@ export default class TextingForm extends Component{
           </Modal.Header>
           <Modal.Body id="modalbody">Would you like to send this message?</Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose} id="modalbutton">
+            <Button variant="dark" onClick={this.handleClose}>
               Send
             </Button>
-            <Button variant="primary" onClick={this.handleClose} id="modalbutton">
+            <Button variant="dark" onClick={this.handleClose}>
               Close
             </Button>
           </Modal.Footer>
