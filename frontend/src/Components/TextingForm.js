@@ -12,12 +12,11 @@ export default class TextingForm extends Component{
       this.state = {
           item: this.emptyItem,
           show: false,
-          data: null
+          msg: null
       };
       this.handleShow = this.handleShow.bind(this);
       this.handleClose = this.handleClose.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   handleClose() {
@@ -38,8 +37,7 @@ export default class TextingForm extends Component{
   }
   async handleSubmit(event) {
       event.preventDefault();
-      const {item, show} = this.state;
-
+      const {item} = this.state;
       await fetch('http://localhost:3000/', {
           method: 'PUT',
           headers: {
@@ -49,10 +47,11 @@ export default class TextingForm extends Component{
           body: JSON.stringify(item)
       })
           .then(response => response.json())
-          .then(data => console.log(data));
-
+          .then(data => this.setState({msg: data.translatedText}));
+    this.setState({ show: true });
   }  
   
+    
     render(){
         return(
             <div className="textingform">
@@ -60,12 +59,12 @@ export default class TextingForm extends Component{
             <Form.Row>
                 <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label id="formLabel">TO</Form.Label>
-                <Form.Control type="email" placeholder="Enter recipient phone number" id="formBox" onChange={this.handleChange.bind(this)}/>
+                <Form.Control type="email" placeholder="Enter recipient phone number" id="formBox" name="number" onChange={this.handleChange.bind(this)}/>
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridState">
                 <Form.Label id="formLabel">LANGUAGE</Form.Label>
-                <Form.Control as="select" id="formBox" onChange={this.handleChange.bind(this)}>
+                <Form.Control as="select" id="formBox" name="language" onChange={this.handleChange.bind(this)}>
                     <option>Choose...</option>
                     <option>Arabic</option> 
                     <option>Chinese(Simpl.)</option>
@@ -94,18 +93,18 @@ export default class TextingForm extends Component{
 
             <Form.Group controlId="formGridTextarea1">
                 <Form.Label id="formLabel">MESSAGE</Form.Label>
-                <Form.Control as="textarea" rows="4" placeholder="Write your text message here (any language)" id="formBox" onChange={this.handleChange.bind(this)}/>
+                <Form.Control as="textarea" rows="4" placeholder="Write your text message here (any language)" id="formBox" name="text" onChange={this.handleChange.bind(this)}/>
             </Form.Group>
 
-            <Button variant="dark" onClick={this.handleShow}>
+            <Button variant="dark" onClick={this.handleSubmit}>
                 SEND
             </Button>
 
-          <Modal show={this.state.show} onHide={this.handleClose} id="modalbody">
+          <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={this.state.show} onHide={this.handleClose} id="modalbody">
           <Modal.Header closeButton>
-            <Modal.Title id="modaltitle">Would you like to send this message?</Modal.Title>
+            <Modal.Title id="contained-modal-title-vcenter">Would you like to send this message?</Modal.Title>
           </Modal.Header>
-          <Modal.Body id="modalbody"></Modal.Body>
+          <Modal.Body id="modalbody"> {this.state.msg} </Modal.Body>
           <Modal.Footer>
             <Button variant="dark" onClick={this.handleClose}>
               Send
