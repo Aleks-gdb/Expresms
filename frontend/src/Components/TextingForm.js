@@ -5,8 +5,10 @@ export default class TextingForm extends Component{
     emptyItem = {
       text: '',
       language: '',
-      number: ''
+      number: '',
+      translatedText: ''
   };
+
   constructor(props, context) {
       super(props, context);
       this.state = {
@@ -53,7 +55,8 @@ export default class TextingForm extends Component{
   async handleSend(event) {
     event.preventDefault();
     const {item} = this.state;
-
+    this.state.item.translatedText = this.state.msg;
+    (this.state.show ? this.setState({show: false}) : this.setState({show: true}));
     await fetch('http://localhost:3000/', {
         method: 'POST',
         headers: {
@@ -61,9 +64,9 @@ export default class TextingForm extends Component{
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
-    });
-    (this.state.show ? this.setState({show: false}) : this.setState({show: true}));
-    }  
+    })
+    .then(response => response.json());
+    } 
   
     render(){
         return(
