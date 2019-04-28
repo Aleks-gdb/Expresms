@@ -25,7 +25,7 @@ import java.util.Map;
 
 
 @Service
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3001")
 public class MessageService {
 
     Map<String, String> languages = new HashMap<String, String>() {{
@@ -114,10 +114,9 @@ public class MessageService {
         com.twilio.rest.api.v2010.account.Message mMessage = com.twilio.rest.api.v2010.account.Message
                 .creator(new PhoneNumber("+1" + message.getNumber()), // to
                         new PhoneNumber(FROM), // from
-                        message.getText())
+                        message.getTranslatedText())
                 .create();
 
         System.out.println(mMessage.getSid());
-        addMessage(message);
     }
 }
