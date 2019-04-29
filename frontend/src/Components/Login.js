@@ -38,13 +38,15 @@ export default class Login extends Component {
         await fetch('http://localhost:3000/messages', {
             method: 'GET',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Authorization': 'Basic dXNlcjt1c2Vy',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(item)
         })
         .then(response => {
             response.json();
+            console.log(response);
             if(response.status === 200)
             {
                 this.setState({success: true});
