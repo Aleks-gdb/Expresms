@@ -15,7 +15,7 @@ export default class Routes extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/profile" component={Profile} />
-          <Route exact path="/settings" component={Account} />
+          {/* <Route exact path="/settings" component={Account} /> */}
         </div>
       </BrowserRouter>
     );

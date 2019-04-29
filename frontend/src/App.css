@@ -212,6 +212,10 @@
   padding-left: 50px;
 }
 
+#noMessages{
+  text-align: center;
+}
+
 #numberList{
   padding-left: 50px;
   padding-top: 10px;

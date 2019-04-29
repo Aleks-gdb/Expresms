@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Navigation from './MainNavigation';
 import {Button, Modal} from 'react-bootstrap';
-import ReactDOM from 'react-dom';
 
 export default class Register extends Component {
     emptyItem={

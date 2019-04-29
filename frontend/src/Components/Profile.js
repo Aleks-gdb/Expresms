@@ -58,7 +58,7 @@ export default class Profile extends Component{
              <h1 id="dashboardHeader">Dashboard</h1>
              <div id="messageList">
              
-                {this.state.messages.length > 0 ? (this.handleShow) : <h2>You have no messages sent!</h2>}
+                {this.state.messages.length > 0 ? (this.handleShow) : <h2 id="noMessages">You have no messages sent!</h2>}
              </div>
              </div>
         );

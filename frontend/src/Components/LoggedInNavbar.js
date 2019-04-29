@@ -13,7 +13,7 @@ export default class LoggedInNavbar extends Component {
           <Nav>
             <NavItem className="pull-right">
               <Button className="loggedinbutton" variant="dark" href="/profile">MESSAGES</Button>
-              <Button className="loggedinbutton" variant="dark" href="/settings">SETTINGS</Button>
+              {/* <Button className="loggedinbutton" variant="dark" href="/settings">SETTINGS</Button> */}
               <Button className="loggedinbutton" variant="dark" value="Sign Out" href="/">LOGOUT</Button>
             </NavItem>
             </Nav>
