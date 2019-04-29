@@ -7,7 +7,7 @@ export default class LoggedInNavbar extends Component {
     return (
       <div className="mainnavbar">
         <Navbar collapseOnSelect fixedTop className="justify-content-between">
-        <Navbar.Brand href="/profile"><img alt="logo" src={Logo} className="logoAcc"/></Navbar.Brand>
+        <Navbar.Brand href="/session"><img alt="logo" src={Logo} className="logoAcc"/></Navbar.Brand>
         <Navbar.Toggle/>
           <Navbar.Collapse className="justify-content-end">
           <Nav>

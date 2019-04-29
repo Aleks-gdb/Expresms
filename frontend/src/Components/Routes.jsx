@@ -3,6 +3,7 @@ import { Route, BrowserRouter } from "react-router-dom";
 import Register from "./Register";
 import Home from "./Home";
 import Login from "./Login";
+import Session from "./Session";
 import Account from "./ProfileSettings";
 import Profile from "./Profile";
 
@@ -15,6 +16,7 @@ export default class Routes extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/session" component={Session} />
           {/* <Route exact path="/settings" component={Account} /> */}
         </div>
       </BrowserRouter>
