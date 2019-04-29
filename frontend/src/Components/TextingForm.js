@@ -14,6 +14,8 @@ export default class TextingForm extends Component{
       this.state = {
           item: this.emptyItem,
           show: false,
+          showC: false,
+          showE: false,
           msg: null
       };
       this.handleClose = this.handleClose.bind(this);
@@ -23,6 +25,8 @@ export default class TextingForm extends Component{
 
   handleClose() {
       this.setState({ show: false });
+      this.setState({ showC: false });
+      this.setState({ showE: false });
   }
 
   handleChange(event) {
@@ -65,7 +69,16 @@ export default class TextingForm extends Component{
         },
         body: JSON.stringify(item)
     })
-    .then(response => response.json());
+    .then(response => {
+        response.json();
+        if(response.status === 200)
+        {
+            (this.state.showC ? this.setState({showC: false}) : this.setState({showC: true}));
+        }else{
+            (this.state.showE ? this.setState({showE: false}) : this.setState({showE: true}));
+        }    
+    });
+    this.setState({name: '', language:'', phone: ''});
     } 
   
     render(){
@@ -132,6 +145,28 @@ export default class TextingForm extends Component{
           </Modal.Footer>
         </Modal>
         </Form>
+        <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={this.state.showC} onHide={this.handleClose} id="modalbody">
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">Success!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body id="modalbody">Your message has been sent!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="dark" onClick={this.handleClose}>
+              Ok
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={this.state.showE} onHide={this.handleClose} id="modalbody">
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">Oh no!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body id="modalbody">Something went wrong and we couldn't send the message.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="dark" onClick={this.handleClose}>
+              Ok
+            </Button>
+          </Modal.Footer>
+        </Modal>
         </div>
     );
   }

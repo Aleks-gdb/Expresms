@@ -35,8 +35,8 @@ export default class Login extends Component {
         event.preventDefault();
         const {item} = this.state;
         console.log(item);
-        await fetch('http://localhost:3000/login', {
-            method: 'POST',
+        await fetch('http://localhost:3000/messages', {
+            method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
