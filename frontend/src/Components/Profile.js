@@ -1,5 +1,6 @@
 import LoggedInNav from "./LoggedInNavbar";
 import React, { Component } from 'react';
+import {Button} from 'react-bootstrap';
 // import ListGroup from 'react-bootstrap/ListGroup';
 // import {Tab, Row, Col, Nav} from 'react-bootstrap';
 // import Messages from './MessageList';
@@ -28,6 +29,15 @@ export default class Profile extends Component{
             .then(data => {this.setState({messages: data}); console.log(this.state.messages)});
     }
 
+    // deleteMsg(){
+    //     fetch('http://localhost:3000/messages/8', {
+    //         method: 'DELETE',
+    //         credentials: 'include'
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {this.setState({messages: data}); console.log(this.state.messages)});
+    // }
+
     handleShow(){
         return(
             <table className="table table-hover">
@@ -40,7 +50,7 @@ export default class Profile extends Component{
                     <th>Date</th>
                 </tr>
             </thead>
-            {/* <tbody>
+            <tbody>
             {
                 this.state.messages.map(msg =>
                 <tr>
@@ -51,7 +61,7 @@ export default class Profile extends Component{
                 <td>{msg.timeStamp}</td>
                 </tr>)
             }
-            </tbody> */}
+            </tbody>
             </table>
         );
     }
@@ -63,8 +73,11 @@ export default class Profile extends Component{
              <h1 id="dashboardHeader">Dashboard</h1>
              <div id="messageList">
              
-                {this.state.messages.length > 0 ? (this.handleShow) : <h2 id="noMessages">You have no messages sent!</h2>}
+                {this.state.messages.length > 0 ? (this.handleShow()) : <h2 id="noMessages">You have no messages sent!</h2>}
              </div>
+             {/* <Button onClick={this.deleteMsg.bind(this)}>
+             Delete
+             </Button> */}
              </div>
         );
     }
