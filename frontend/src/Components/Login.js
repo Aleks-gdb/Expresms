@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Navigation from './MainNavigation';
 import {Button, Modal} from 'react-bootstrap';
-
-export default class Login extends Component {
+import {withRouter} from 'react-router';
+class Login extends Component {
     emptyItem={
         email: '',
         password: ''
@@ -34,32 +34,26 @@ export default class Login extends Component {
     async handleSubmit(event) {
         event.preventDefault();
         const {item} = this.state;
-        console.log(item);
         await fetch('http://localhost:3000/messages', {
             method: 'GET',
             headers: {
                 'Authorization': 'Basic dXNlcjt1c2Vy',
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            },
-            body: JSON.stringify(item)
+            }
         })
         .then(response => {
             response.json();
             console.log(response);
             if(response.status === 200)
             {
-                this.setState({success: true});
+                let path = `/profile`;
+                this.props.history.push(path);
+            }else{
+                (this.state.show ? this.setState({show: false}) : this.setState({show: true}));
             }
-        })
-        if(this.state.success)
-        {
-            this.setState({success: false});
-            let path = `../profile`;
-            this.props.history.push(path);
-        }else{
-            (this.state.show ? this.setState({show: false}) : this.setState({show: true}));
-        }
+        });
+        
     }  
 
     render() {
@@ -68,7 +62,7 @@ export default class Login extends Component {
             <Navigation/>
             <div className="loginform" style={{ marginTop: '50px'}}>
                 <h2 className="loginformheader">Login</h2>
-                <form method = "post" className="form-grouplogin">
+                <form className="form-grouplogin">
                     <div>
                         <input
                         type="email"
@@ -88,7 +82,7 @@ export default class Login extends Component {
                         />
                     </div>
                     <div className="form-grouplogin">
-                        <Button type="submit" value="Sign In" variant="dark" className="loginButtonForm">
+                        <Button variant="dark" className="loginButtonForm" onClick={this.handleSubmit}>
                             Login
                         </Button>
                     </div>
@@ -109,3 +103,5 @@ export default class Login extends Component {
         )
     }
 }
+
+export default withRouter(Login);
