@@ -1,8 +1,45 @@
 import React, { Component } from "react";
-import { Nav, Navbar, NavItem, Button } from "react-bootstrap";
+import { Nav, Navbar, NavItem, Button, Modal } from "react-bootstrap";
 import Logo from "../Logo.png";
-export default class LoggedInNavbar extends Component {
-  
+import {withRouter} from 'react-router';
+class LoggedInNavbar extends Component {
+
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+        show: false
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+}
+
+  handleClose(){
+    this.setState({show: false});
+}
+
+  async handleSubmit(event) {
+    event.preventDefault();
+    await fetch('http://localhost:3000/messages', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Basic dTp1',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        response.json();
+        console.log(response);
+        if(response.status !== 200)
+        {
+            let path = `/`;
+            this.props.history.push(path);
+        }else{
+            (this.state.show ? this.setState({show: false}) : this.setState({show: true}));
+        }
+    });
+  }
+
   render() {
     return (
       <div className="mainnavbar">
@@ -12,14 +49,25 @@ export default class LoggedInNavbar extends Component {
           <Navbar.Collapse className="justify-content-end">
           <Nav>
             <NavItem className="pull-right">
-              <Button className="loggedinbutton" variant="dark" href="/profile">MESSAGES</Button>
-              {/* <Button className="loggedinbutton" variant="dark" href="/settings">SETTINGS</Button> */}
-              <Button className="loggedinbutton" variant="dark" value="Sign Out" href="/">LOGOUT</Button>
+              <Button className="loggedinbutton" variant="dark" href="/profile">MESSAGES</Button>s
+              <Button className="loggedinbutton" variant="dark" onClick={this.handleSubmit}>LOGOUT</Button>
             </NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={this.state.show} onHide={this.handleClose} id="modalbody">
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">Something went wrong!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body id="modalbody">Sorry we couldn't log you--internal error.</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" onClick={this.handleClose}>
+                    Ok
+                    </Button>
+                </Modal.Footer>
+                </Modal>
       </div>
     );
   }
 }
+export default withRouter(LoggedInNavbar);

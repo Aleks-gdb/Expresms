@@ -82,7 +82,6 @@ export default class TextingForm extends Component{
     } 
   
     render(){
-        const {item} = this.state;
         return(
             <div className="textingform">
             <Form>

@@ -4,7 +4,6 @@ import Register from "./Register";
 import Home from "./Home";
 import Login from "./Login";
 import Session from "./Session";
-import Account from "./ProfileSettings";
 import Profile from "./Profile";
 
 export default class Routes extends Component {

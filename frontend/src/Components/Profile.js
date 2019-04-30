@@ -1,6 +1,5 @@
 import LoggedInNav from "./LoggedInNavbar";
 import React, { Component } from 'react';
-import {Button} from 'react-bootstrap';
 // import ListGroup from 'react-bootstrap/ListGroup';
 // import {Tab, Row, Col, Nav} from 'react-bootstrap';
 // import Messages from './MessageList';
