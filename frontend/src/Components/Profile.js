@@ -17,10 +17,15 @@ export default class Profile extends Component{
     
     componentDidMount(){
         fetch('http://localhost:3000/messages', {
-            method: 'GET'
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
         })
             .then(response => response.json())
-            .then(data => this.setState({messages: data}));
+            .then(data => {this.setState({messages: data}); console.log(this.state.messages)});
     }
 
     handleShow(){
@@ -35,7 +40,7 @@ export default class Profile extends Component{
                     <th>Date</th>
                 </tr>
             </thead>
-            <tbody>
+            {/* <tbody>
             {
                 this.state.messages.map(msg =>
                 <tr>
@@ -46,7 +51,7 @@ export default class Profile extends Component{
                 <td>{msg.timeStamp}</td>
                 </tr>)
             }
-            </tbody>
+            </tbody> */}
             </table>
         );
     }

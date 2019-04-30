@@ -73,7 +73,7 @@ export default class Session extends Component {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        credentials: 'same-origin',
+        credentials: 'include',
         body: JSON.stringify(item)
     })
     .then(response => {response.json(); console.log(response);});
