@@ -3,6 +3,7 @@ import Navigation from './MainNavigation';
 import {Button, Modal} from 'react-bootstrap';
 import {withRouter} from 'react-router';
 class Login extends Component {
+
     emptyItem={
         email: '',
         password: ''
@@ -33,11 +34,13 @@ class Login extends Component {
   
     async handleSubmit(event) {
         event.preventDefault();
-        const {item} = this.state;
+        var Base64 = require('js-base64').Base64;
+        var token = this.state.item.email + ":" + this.state.item.password;
+        var encodedToken = Base64.encode(token);
         await fetch('http://localhost:3000/messages', {
             method: 'GET',
             headers: {
-                'Authorization': 'Basic dXNlcjt1c2Vy',
+                'Authorization': 'Basic ' + encodedToken,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }

@@ -65,8 +65,18 @@ export default class Session extends Component {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
+    });
+
+    await fetch('http://localhost:3000/messages', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify(item)
     })
-    .then(response => response.json());
+    .then(response => {response.json(); console.log(response);});
     } 
   
     render(){
