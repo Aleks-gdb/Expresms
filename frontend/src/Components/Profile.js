@@ -28,15 +28,6 @@ export default class Profile extends Component{
             .then(data => {this.setState({messages: data}); console.log(this.state.messages)});
     }
 
-    // deleteMsg(){
-    //     fetch('http://localhost:3000/messages/8', {
-    //         method: 'DELETE',
-    //         credentials: 'include'
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => {this.setState({messages: data}); console.log(this.state.messages)});
-    // }
-
     handleShow(){
         return(
             <table className="table table-hover">
@@ -46,7 +37,6 @@ export default class Profile extends Component{
                     <th>Language</th>
                     <th>Original text</th>
                     <th>Translated text</th>
-                    <th>Date</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,7 +47,6 @@ export default class Profile extends Component{
                 <td>{msg.language}</td>
                 <td>{msg.text}</td>
                 <td>{msg.translatedText}</td>
-                <td>{msg.timeStamp}</td>
                 </tr>)
             }
             </tbody>
@@ -74,9 +63,6 @@ export default class Profile extends Component{
              
                 {this.state.messages.length > 0 ? (this.handleShow()) : <h2 id="noMessages">You have no messages sent!</h2>}
              </div>
-             {/* <Button onClick={this.deleteMsg.bind(this)}>
-             Delete
-             </Button> */}
              </div>
         );
     }
