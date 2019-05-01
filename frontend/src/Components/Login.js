@@ -43,7 +43,7 @@ class Login extends Component {
                 'Authorization': 'Basic ' + encodedToken,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
         })
         .then(response => {
             response.json();
