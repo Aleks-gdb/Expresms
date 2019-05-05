@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Form, Col, Button, Modal} from 'react-bootstrap';
 import Navigation from './LoggedInNavbar';
-
+//Logged in user session, reusing the main page form with the addition of storing the sent messages
 export default class Session extends Component {
     emptyItem = {
       text: '',

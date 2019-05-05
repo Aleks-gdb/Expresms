@@ -25,9 +25,9 @@ export default class Profile extends Component{
             credentials: 'include'
         })
             .then(response => response.json())
-            .then(data => {this.setState({messages: data}); console.log(this.state.messages)});
+            .then(data => {this.setState({messages: data})});
     }
-
+    //Displaying the messages in a table form
     handleShow(){
         return(
             <table className="table table-hover">
@@ -60,7 +60,7 @@ export default class Profile extends Component{
              <LoggedInNav/>
              <h1 id="dashboardHeader">Dashboard</h1>
              <div id="messageList">
-             
+             {/*Setting the default for when no messages have been sent*/}
                 {this.state.messages.length > 0 ? (this.handleShow()) : <h2 id="noMessages">You have no messages sent!</h2>}
              </div>
              </div>

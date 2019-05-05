@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Navigation from './MainNavigation';
 import {Button, Modal} from 'react-bootstrap';
-
+//Basic registration form component to create a user account in the system
 export default class Register extends Component {
     emptyItem={
         email: '',

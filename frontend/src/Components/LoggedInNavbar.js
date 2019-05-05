@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Nav, Navbar, NavItem, Button, Modal } from "react-bootstrap";
 import Logo from "../Logo.png";
 import {withRouter} from 'react-router';
+/*Navigation displayed to the logged in user*/
 class LoggedInNavbar extends Component {
 
   constructor(props, context) {
@@ -29,7 +30,6 @@ class LoggedInNavbar extends Component {
     })
     .then(response => {
         response.json();
-        console.log(response);
         if(response.status !== 200)
         {
             let path = `/`;
@@ -59,7 +59,7 @@ class LoggedInNavbar extends Component {
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">Something went wrong!</Modal.Title>
                 </Modal.Header>
-                <Modal.Body id="modalbody">Sorry we couldn't log you--internal error.</Modal.Body>
+                <Modal.Body id="modalbody">Sorry we couldn't log you out--internal error.</Modal.Body>
                 <Modal.Footer>
                     <Button variant="dark" onClick={this.handleClose}>
                     Ok

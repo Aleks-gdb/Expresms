@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Navigation from './MainNavigation';
 import {Button, Modal} from 'react-bootstrap';
 import {withRouter} from 'react-router';
+//Basic login page component
 class Login extends Component {
 
     emptyItem={

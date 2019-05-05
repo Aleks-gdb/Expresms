@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, NavItem, Button } from "react-bootstrap";
 import Logo from "../Logo.png";
+/*The navigation component used for when there is no user logged in to the system*/
 export default class MainNavigation extends Component {
   render() {
     return (

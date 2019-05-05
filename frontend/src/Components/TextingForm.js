@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Form, Col, Button, Modal} from 'react-bootstrap';
 
+/*The form user fills out in order to send the message*/
 export default class TextingForm extends Component{
     emptyItem = {
       text: '',
@@ -22,23 +23,22 @@ export default class TextingForm extends Component{
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleSend = this.handleSend.bind(this);
   }
-
+  //Handling closing the modal that displays the translated text and a success or an error message
   handleClose() {
       this.setState({ show: false });
       this.setState({ showC: false });
       this.setState({ showE: false });
   }
-
+  //Handling user input into the form
   handleChange(event) {
       const target = event.target;
       const value = target.value;
       const name = target.name;
       let item = {...this.state.item};
       item[name] = value;
-      console.log(item);
       this.setState({item});
   }
-
+  //Handling data submission to the server to receive the translated text
   async handleSubmit(event) {
       event.preventDefault();
       const {item} = this.state;
@@ -53,9 +53,10 @@ export default class TextingForm extends Component{
       })
           .then(response => response.json())
           .then(data => this.setState({msg: data.translatedText}));
+    //Displaying the translated text back to the user for confirmation
     (this.state.show ? this.setState({show: false}) : this.setState({show: true}));
   }  
-
+  //Handling the sending of the text once the user confirms they would like to proceed with the message
   async handleSend(event) {
     event.preventDefault();
     const {item} = this.state;
@@ -69,6 +70,7 @@ export default class TextingForm extends Component{
         },
         body: JSON.stringify(item)
     })
+    //Error checking, displaying appropriate messages back to the user about succession or failure of the action
     .then(response => {
         response.json();
         if(response.status === 200)
@@ -92,6 +94,7 @@ export default class TextingForm extends Component{
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridState">
+                {/*The language menu*/}
                 <Form.Label id="formLabel">LANGUAGE</Form.Label>
                 <Form.Control as="select" id="formBox" name="language" onChange={this.handleChange.bind(this)}>
                     <option>Choose...</option>
@@ -128,7 +131,7 @@ export default class TextingForm extends Component{
             <Button variant="dark" onClick={this.handleSubmit}>
                 SEND
             </Button>
-
+          {/*First modal displayed to the user as a confirmation for sending the translated text*/}
           <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={this.state.show} onHide={this.handleClose} id="modalbody">
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">Would you like to send this message?</Modal.Title>
@@ -144,6 +147,7 @@ export default class TextingForm extends Component{
           </Modal.Footer>
         </Modal>
         </Form>
+        {/*Modal displayed when the message is sent with no issues*/}
         <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={this.state.showC} onHide={this.handleClose} id="modalbody">
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">Success!</Modal.Title>
@@ -155,6 +159,7 @@ export default class TextingForm extends Component{
             </Button>
           </Modal.Footer>
         </Modal>
+        {/*The modal displayed when the message has not been sent due to issues*/}
         <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={this.state.showE} onHide={this.handleClose} id="modalbody">
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">Oh no!</Modal.Title>

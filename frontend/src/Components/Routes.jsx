@@ -6,6 +6,7 @@ import Login from "./Login";
 import Session from "./Session";
 import Profile from "./Profile";
 
+/*class to route to other components and link them to pages*/
 export default class Routes extends Component {
   render() {
     return (
@@ -16,7 +17,6 @@ export default class Routes extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/session" component={Session} />
-          {/* <Route exact path="/settings" component={Account} /> */}
         </div>
       </BrowserRouter>
     );
